@@ -2,8 +2,8 @@
 
 
 def calc_dinner(dinner_cost, guests):
-    dinner_cost = int(dinner_cost)
-    guests = int(guests)
+    dinner_cost = float(dinner_cost)
+    guests = float(guests)
 
     return dinner_cost / guests
 
