@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./edd_week_5/biblioteca/modelos"
+    ]
+}
