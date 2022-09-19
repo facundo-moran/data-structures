@@ -1,9 +1,6 @@
 from modelos.Categoria import Categoria
 from modelos.Libro import Libro
 from modelos.Autor import Autor
-import sys
-sys.path.insert(0, "..")
-
 
 def filtrar_por_anio(libros: list[Libro], anio: int) -> list:
     return [libro for libro in libros if libro.anio_publicacion == anio]
