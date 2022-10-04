@@ -4,7 +4,7 @@ from modelos.Persona import Persona
 from modelos.Raza import Raza
 
 
-def max_mascotero(mascotas: list[Mascota]):
+def max_mascotero(mascotas: list[Mascota]) -> Persona:
     mascoteros = set(map(lambda mascota: mascota.amo, mascotas))
     mascoteros_dict = dict.fromkeys(mascoteros,0)
 
@@ -18,7 +18,7 @@ def filtrar_por_especie(mascotas: list[Mascota], especie: Especie) -> list[Masco
     return filter(lambda mascota: mascota.raza.especie == especie, mascotas)
 
 
-def filtrar_gerontes(mascotas: list[Mascota]) -> list:
+def filtrar_gerontes(mascotas: list[Mascota]) -> list[Mascota]:
     return filter(lambda mascota: mascota.edad > 13, mascotas)
 
 
@@ -29,11 +29,11 @@ def imprimir(mascotas: list[Mascota]) -> None:
 
 def app():
 
-    amo1 = Persona("apellido1", "nombre1", "123412")
-    amo2 = Persona("apellido2", "nombre2", "134134")
-    amo3 = Persona("apellido3", "nombre3", "345345")
-    amo4 = Persona("apellido4", "nombre4", "235235")
-    amo5 = Persona("apellido5", "nombre5", "457547")
+    amo1 = Persona("Fernandez", "Roberto", "123412")
+    amo2 = Persona("Perez", "Alejandro", "134134")
+    amo3 = Persona("Gomez", "Guillermo", "345345")
+    amo4 = Persona("Dominguez", "Domingo", "235235")
+    amo5 = Persona("Menendez", "Mendez", "457547")
 
     especie1 = Especie("perros")
     especie2 = Especie("gatos")
