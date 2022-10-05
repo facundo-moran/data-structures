@@ -26,11 +26,11 @@ class Empleado:
     @property
     def oficina(self):
         return self.__oficina
-    
+
     @property
     def documento(self):
         return self.__documento
-    
+
     def __eq__(self, __o: object) -> bool:
         return self.__legajo == __o.legajo and self.__documento == __o.documento
 
