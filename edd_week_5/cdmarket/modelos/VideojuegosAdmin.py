@@ -46,6 +46,7 @@ class VideojuegosAdmin(VideojuegosAdminAbstract):
 
         plataformas = list(zip(cant_juegos_plataforma.keys(),
                            cant_juegos_plataforma.values()))
+                           
         return plataformas
 
     def ordenar_titulo(self) -> None:
