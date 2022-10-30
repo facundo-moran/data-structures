@@ -2,16 +2,26 @@ from typing import Any, List
 from linked_stack import LinkedStack
 from linked_stack_ext_abstract import LinkedStackExtAbstract
 
+
 class LinkedStackExt(LinkedStackExtAbstract, LinkedStack):
 
-    def multi_pop(self, num:int) -> List[Any]:
-        pass
-    
+    def multi_pop(self, num: int) -> List[Any]:
+        resultados = list()
+
+        try:
+            while num:
+                resultados.append(self.pop())
+                num-=1
+        except:
+            None
+
+        return resultados
+
     def replace_all(self, param1: Any, param2: Any) -> None:
         actual = self._head
 
         while actual:
-            if actual. elemento== param1:
+            if actual. elemento == param1:
                 actual.elemento = param2
             actual = actual.siguiente
 
