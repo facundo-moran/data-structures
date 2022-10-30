@@ -1,9 +1,11 @@
-from typing import Any, Union
+from typing import Any
 
 
 class Nodo:
 
-    __slots__ = "elemento", "siguiente"
-    def __init__(self, elemento: Any, siguiente = None) -> None:
+    __slots__ = "elemento", "anterior", "siguiente"
+
+    def __init__(self, elemento: Any, anterior=None, siguiente=None) -> None:
         self.elemento = elemento
-        self.siguiente: Union[Nodo, None] = siguiente
+        self.anterior: Nodo | None = anterior
+        self.siguiente: Nodo | None = siguiente
