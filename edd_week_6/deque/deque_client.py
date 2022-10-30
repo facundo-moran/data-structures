@@ -1,17 +1,18 @@
 from deque import Deque
 from util import h1, h2
 
+
 def deque_client():
     deque = Deque()
     h1("Double Ended Queue")
 
     for i in range(1, 49):
-        deque.add_last(i)   
+        deque.add_last(i)
 
     print(deque, "\n")
     h2("Poniendo a prueba los metodos")
 
-    print("Cantidad incial de elemento en la estructura: ", len(deque), "\n" )
+    print("Cantidad incial de elemento en la estructura: ", len(deque), "\n")
 
     print("¿La estructura está vacía?", deque.is_empty(), "\n")
 
@@ -28,13 +29,14 @@ def deque_client():
 
     print("Eliminando primer elemento..")
     deque.delete_first()
-    print(deque,"\n")
+    print(deque, "\n")
 
     print("Eliminando ultimo elemento..")
     deque.delete_last()
     print(deque, "\n")
 
-    print("Cantidad final de elementos en la estructura: ", len(deque), "\n" )
+    print("Cantidad final de elementos en la estructura: ", len(deque), "\n")
 
-if __name__ == '__main__':  
+
+if __name__ == '__main__':
     deque_client()

@@ -1,5 +1,4 @@
 from copy import deepcopy
-from tkinter import SEL_FIRST
 from typing import Any
 from deque_abstract import DequeAbstract
 from nodo import Nodo
@@ -34,7 +33,6 @@ class Deque(DequeAbstract):
             else:
                 aux.siguiente = self._tail
                 self._tail.anterior = aux
-                
 
         if endNode == self._head:
             aux = self._head
@@ -46,7 +44,6 @@ class Deque(DequeAbstract):
             else:
                 aux.anterior = self._head
                 self._head.siguiente = aux
-            
 
     def _replace_tail(self, element: Any):
         self.__replace_end(element, self._tail)
@@ -102,7 +99,6 @@ class Deque(DequeAbstract):
         if not self._head:
             self.__initialize(element)
         else:
-            print(f'entre al else y queres cabecear {element}')
             self._replace_head(element)
 
         self._size += 1
