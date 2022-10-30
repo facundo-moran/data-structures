@@ -1,9 +1,8 @@
 from copy import deepcopy
-from re import S
 from typing import Any, Iterator
+
 from double_linked_list_abstract import DoubleLinkedListAbstract
 from nodo import Nodo
-
 
 class DoubleLinkedList(DoubleLinkedListAbstract):
 
@@ -11,10 +10,6 @@ class DoubleLinkedList(DoubleLinkedListAbstract):
         self._head: Nodo | None = None
         self._tail: Nodo | None = None
         self._size: int = 0
-
-    @property
-    def size(self) -> int:
-        return self._size
 
     def __is_valid_argument(self, element: Any) -> bool:
         return not element == None
