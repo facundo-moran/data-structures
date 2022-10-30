@@ -1,3 +1,5 @@
+from cmath import log
+from this import d
 from typing import Any, List
 from linked_stack import LinkedStack
 from linked_stack_ext_abstract import LinkedStackExtAbstract
@@ -11,7 +13,7 @@ class LinkedStackExt(LinkedStackExtAbstract, LinkedStack):
         try:
             while num:
                 resultados.append(self.pop())
-                num-=1
+                num -= 1
         except:
             None
 
@@ -21,10 +23,24 @@ class LinkedStackExt(LinkedStackExtAbstract, LinkedStack):
         actual = self._head
 
         while actual:
-            if actual. elemento == param1:
+            if actual.elemento == param1:
                 actual.elemento = param2
             actual = actual.siguiente
 
     def exchange(self) -> None:
+
         if self.is_empty():
-            raise Exception("La pila está vacia")
+            raise Exception("Pila vacía. Operación no soportada")
+
+        ultimo = self._head
+        idx = 1
+
+        while ultimo.siguiente:
+            ultimo = ultimo.siguiente
+
+            if idx == (len(self)-1):
+                head_elm = self._head.elemento
+                self._head.elemento = ultimo.elemento
+                ultimo.elemento = head_elm
+
+            idx += 1
