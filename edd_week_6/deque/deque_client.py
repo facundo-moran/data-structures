@@ -5,7 +5,7 @@ def deque_client():
     deque = Deque()
     h1("Double Ended Queue")
 
-    for i in range(1, 11):
+    for i in range(1, 49):
         deque.add_last(i)   
 
     print(deque, "\n")

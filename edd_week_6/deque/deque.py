@@ -1,3 +1,5 @@
+from copy import deepcopy
+from tkinter import SEL_FIRST
 from typing import Any
 from deque_abstract import DequeAbstract
 from nodo import Nodo
@@ -17,28 +19,34 @@ class Deque(DequeAbstract):
     def __initialize(self, element: Any):
         new_end = Nodo(element)
 
-        self._tail = new_end
-        self._head = new_end
-
-        self._tail.anterior = self._head
-        self._tail.siguiente = self._head
-
-        self._head.anterior = self._tail
-        self._head.siguiente = self._tail
+        self._tail = deepcopy(new_end)
+        self._head = deepcopy(new_end)
 
     def __replace_end(self, element: any, endNode: Nodo):
 
         if endNode == self._tail:
             aux = self._tail
-            self._tail = Nodo(element, aux, aux.siguiente)
-            aux.siguiente = self._tail
-            return
+            self._tail = Nodo(element)
+
+            if len(self) == 1:
+                self._head.siguiente = self._tail
+                self._tail.anterior = self._head
+            else:
+                aux.siguiente = self._tail
+                self._tail.anterior = aux
+                
 
         if endNode == self._head:
             aux = self._head
-            self._head = Nodo(element, aux.anterior, aux)
-            aux.anterior = self._head
-            return
+            self._head = Nodo(element)
+
+            if len(self) == 1:
+                self._tail.anterior = self._head
+                self._head.siguiente = self._tail
+            else:
+                aux.anterior = self._head
+                self._head.siguiente = aux
+            
 
     def _replace_tail(self, element: Any):
         self.__replace_end(element, self._tail)
@@ -54,15 +62,11 @@ class Deque(DequeAbstract):
         if self.is_empty():
             return "Deque()"
 
+        actual = self._head
         resultado = ""
 
-        actual = self._head
         while actual:
             resultado += str(actual.elemento) + ", "
-
-            if actual == self._tail:
-                break
-
             actual = actual.siguiente
 
         resultado = resultado[:len(resultado)-2]
@@ -98,6 +102,7 @@ class Deque(DequeAbstract):
         if not self._head:
             self.__initialize(element)
         else:
+            print(f'entre al else y queres cabecear {element}')
             self._replace_head(element)
 
         self._size += 1
@@ -121,8 +126,8 @@ class Deque(DequeAbstract):
         if self.is_empty():
             raise Exception("La estructura está vacía")
 
-        self._tail.siguiente = self._head.siguiente
-        self._head = self._tail.siguiente
+        self._head.siguiente.anterior = None
+        self._head = self._head.siguiente
 
         self._size -= 1
 
@@ -130,7 +135,7 @@ class Deque(DequeAbstract):
         if self.is_empty():
             raise Exception("La estructura está vacía")
 
-        self._head.anterior = self._tail.anterior
-        self._tail = self._head.anterior
+        self._tail.anterior.siguiente = None
+        self._tail = self._tail.anterior
 
         self._size -= 1
