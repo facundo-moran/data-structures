@@ -58,7 +58,7 @@ class unsorted_priority_queue(UnsortedPriorityQueueAbstract):
         min_elm = self._elements.copy()[len(self._elements)-1]
 
         if len(min_elm.get_values()) > 1:
-            return (min_elm.get_key(), min_elm.get_values().copy()[len(min_elm.get_values())-1])
+            return (min_elm.get_key(), min_elm.get_head_value())
 
         return (min_elm.get_key(), min_elm.get_values())
 
@@ -81,11 +81,9 @@ class unsorted_priority_queue(UnsortedPriorityQueueAbstract):
         min_elm = self._elements[len(self._elements)-1]
 
         if len(min_elm.get_values()) > 1:
-            min_elm_val = min_elm.get_values()[len(min_elm.get_values())-1]
-            min_elm.get_values().reverse()
-            min_elm.get_values().remove(min_elm_val)
-            min_elm.get_values().reverse()
-            return (min_elm.get_key(), min_elm_val)
+            head_val = min_elm.get_head_value()
+            min_elm.get_values().remove(head_val)
+            return (min_elm.get_key(), head_val)
 
         self._elements.remove(min_elm)
 
