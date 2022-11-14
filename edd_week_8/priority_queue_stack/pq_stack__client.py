@@ -1,6 +1,5 @@
 from priority_queue_stack import PriorityQueueStack
 
-
 def app():
     queue_stack = PriorityQueueStack()
 
@@ -26,15 +25,18 @@ def app():
     print(f'queue len: {len(queue_stack)}')
     print(f'queue is empty: {queue_stack.is_empty()}')
     print(f'queue is full: {queue_stack.is_full()}')
+    print(f'queue stack: {queue_stack}')
     print(f'queue top: {queue_stack.top()}')
     print(f'queue pop: {queue_stack.pop()}')
     print(f'queue len: {len(queue_stack)}')
     print(f'queue stack: {queue_stack}')
     print(f'queue top: {queue_stack.top()}')
     print(f'queue pop: {queue_stack.pop()}')
+    print(f'queue len: {len(queue_stack)}')
     print(f'queue stack: {queue_stack}')
     print(f'make empty: {queue_stack.make_empty()}')
     print(f'queue stack: {queue_stack}')
+    print(f'queue len: {len(queue_stack)}')
 
 if __name__ == "__main__":
     app()

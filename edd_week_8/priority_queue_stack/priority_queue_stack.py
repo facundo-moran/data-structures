@@ -29,7 +29,7 @@ class PriorityQueueStack():
         if self.is_empty():
             raise Exception("La operación no se puede llevar a cabo.")
             
-        return self._elements.min().get_values()[0]
+        return (self._elements.min().get_head_value())
 
     def push(self, elm: Any) -> None:
         if not elm or self.is_full():
@@ -41,7 +41,7 @@ class PriorityQueueStack():
         if self.is_empty():
             raise Exception("La operación no se puede llevar a cabo.")
 
-        return self._elements.remove_min().get_values()[0]
+        return (self._elements.remove_min().get_head_value())
 
     def make_empty(self) -> bool:
         try:

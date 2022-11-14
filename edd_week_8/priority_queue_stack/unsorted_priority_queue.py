@@ -50,16 +50,14 @@ class unsorted_priority_queue(UnsortedPriorityQueueAbstract):
         return (self._elements.copy()[len(self._elements)-1])
 
     def __repr__(self) -> str:
-        return f"\tPriorityQueue(elements={self._elements})"
+        return f"PriorityQueue(elements={self._elements})"
 
     def __str__(self) -> str:
         salida = 'PriorityQueue['
 
         if len(self._elements) > 0:
             for elm in self._elements:
-                salida += f'\n{str(elm)} '
-                if (self._elements.index(elm) == len(self._elements)-1):
-                    salida += salida.strip()
+                salida += f'\n{str(elm)}'
 
         salida += ']'
         return salida
