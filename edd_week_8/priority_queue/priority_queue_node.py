@@ -15,9 +15,6 @@ class PriorityQueueNode():
 
     def __repr__(self) -> str:
         return f"\tPriorityQueueNode(nombre={self.__node_key}, values={self.__values})"
-
-    def __del__(self):
-        print('__del__ was called')
         
     def get_key(self):
         return copy.copy(self.__node_key)
@@ -26,7 +23,7 @@ class PriorityQueueNode():
         return self.__values.copy()[0]
 
     def get_values(self) -> List[Any]:
-        return self.__values.copy()
+        return self.__values
 
     def add_value(self, v: Any) -> None:
         self.__values.append(v)

@@ -1,4 +1,4 @@
-from typing import Any, Tuple, Any
+from typing import Tuple, Any
 from UnsortedPriorityQueueAbstract import UnsortedPriorityQueueAbstract
 from priority_queue_node import PriorityQueueNode
 
@@ -44,6 +44,7 @@ class unsorted_priority_queue(UnsortedPriorityQueueAbstract):
                     item.add_value(v)
                     self._elements.append(item)
 
+                self._elements.sort(key=lambda node: node.get_key(),reverse=True)
             except Exception as ex:
                 print(ex)
         else:
@@ -54,28 +55,38 @@ class unsorted_priority_queue(UnsortedPriorityQueueAbstract):
         if self.is_empty():
             raise Exception("La operación no se puede llevar a cabo.")
 
-        return (self._elements.copy()[len(self._elements)-1])
+        min_elm = self._elements.copy()[len(self._elements)-1]
+
+        if len(min_elm.get_values()) > 1:
+            return (min_elm.get_key(), min_elm.get_values().copy()[len(min_elm.get_values())-1])
+
+        return (min_elm.get_key(), min_elm.get_values())
 
     def __repr__(self) -> str:
-        return f"\tPriorityQueue(elements={self._elements})"
+        return f"PriorityQueue(elements={self._elements})"
 
     def __str__(self) -> str:
         salida = 'PriorityQueue['
 
-        if len(self._elements) > 0:
-            for elm in self._elements:
-                salida += f'\n{str(elm)} '
-                if (self._elements.index(elm) == len(self._elements)-1):
-                    salida += salida.strip()
+        for elm in self._elements:
+            salida += f'\n{str(elm)}'
 
-        salida += ']'
+        salida += '\t\n]'
         return salida
 
     def remove_min(self) -> Tuple[Any]:
         if self.is_empty():
             raise Exception("La operación no se puede llevar a cabo.")
 
-        last_item = self._elements[len(self._elements)-1]
-        self._elements.remove(last_item)
+        min_elm = self._elements[len(self._elements)-1]
 
-        return (last_item)
+        if len(min_elm.get_values()) > 1:
+            min_elm_val = min_elm.get_values()[len(min_elm.get_values())-1]
+            min_elm.get_values().reverse()
+            min_elm.get_values().remove(min_elm_val)
+            min_elm.get_values().reverse()
+            return (min_elm.get_key(), min_elm_val)
+
+        self._elements.remove(min_elm)
+
+        return (min_elm.get_key(), min_elm.get_head_value())
