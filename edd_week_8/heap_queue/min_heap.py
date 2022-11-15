@@ -64,6 +64,8 @@ class Heap:
                         try:
                             if self._nodes[root] > self._nodes[right_child]:
                                 left_child = right_child*2
+                            else:
+                                left_child = (right_child*2)+1
                         except:
                             self._nodes.insert(right_child, self._nodes[root])
                             self._nodes.remove(self._nodes[root])
@@ -73,13 +75,13 @@ class Heap:
                     self._nodes.remove(self._nodes[root])
                     break
 
-    def find_min(self):
+    def _find_min(self):
         if self.is_empty():
             raise Exception("La operación no se puede llevar a cabo.")
 
         return self._nodes.copy()[0]
 
-    def insert(self, v: Any) -> None:
+    def _insert(self, v: Any) -> None:
         if not v:
             raise Exception("La operación no se puede llevar a cabo.")
 
@@ -94,7 +96,7 @@ class Heap:
         self._nodes.append(v)
         self.__heapify_up()
 
-    def delete(self, v: Any) -> bool:
+    def _delete(self, v: Any) -> bool:
         if self.is_empty():
             raise Exception("La operación no se puede llevar a cabo.")
 
@@ -111,7 +113,7 @@ class Heap:
         except:
             return False
 
-    def remove_min(self) -> Any:
+    def _remove_min(self) -> Any:
         if self.is_empty():
             raise Exception("La operación no se puede llevar a cabo.")
 
